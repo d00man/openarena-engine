@@ -1257,10 +1257,18 @@ static void IN_ShowHideScreenButtons( void )
 
 void IN_OpenCloseGyroscope( void )
 {
-	if ( (in_gyroscope->integer || cl_voip->integer == VOIP_ENABLED) && sticks[JOY_SDL_GYROSCOPE] == NULL ) {
+	if ( (in_gyroscope->integer 
+# ifdef USE_VOIP
+	  || cl_voip->integer == VOIP_ENABLED
+# endif
+	) && sticks[JOY_SDL_GYROSCOPE] == NULL ) {
 		sticks[JOY_SDL_GYROSCOPE] = SDL_JoystickOpen( JOY_SDL_GYROSCOPE );
 	}
-	if ( !(in_gyroscope->integer || cl_voip->integer == VOIP_ENABLED) && sticks[JOY_SDL_GYROSCOPE] != NULL ) {
+	if ( !(in_gyroscope->integer 
+# ifdef USE_VOIP
+	  || cl_voip->integer == VOIP_ENABLED
+# endif
+	) && sticks[JOY_SDL_GYROSCOPE] != NULL ) {
 		SDL_JoystickClose( sticks[JOY_SDL_GYROSCOPE] );
 		sticks[JOY_SDL_GYROSCOPE] = NULL;
 	}

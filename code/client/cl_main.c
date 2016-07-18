@@ -3894,7 +3894,7 @@ void CL_Init( void ) {
 	cl_voipAccelShakeRecordingTime = Cvar_Get ("cl_voipAccelShakeRecordingTime", "3000", CVAR_ARCHIVE);
 
 	// This is a protocol version number.
-	cl_voip = Cvar_Get ("cl_voip", "2", CVAR_USERINFO | CVAR_ARCHIVE); // Listed only by default
+	cl_voip = Cvar_Get ("cl_voip", "0", CVAR_USERINFO | CVAR_ARCHIVE); // Listed only by default
 	Cvar_CheckRange( cl_voip, 0, 2, qtrue );
 
 	// If your data rate is too low, you'll get Connection Interrupted warnings
